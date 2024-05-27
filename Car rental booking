@@ -1,0 +1,109 @@
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Car Rent Booking")
+
+r1_v=tk.StringVar()
+r1_v.set(None)
+
+car_models = {
+    "Mini":1000,
+    "Sedan": 1500,
+    "SUV": 2700,
+    "Sports Car": 4000,
+    "Luxury Car": 7000,
+}
+
+def calculate_cost():
+    model = car_model.get()
+    days = int(num_days.get())
+    price = car_models[model]
+    total_cost = price * days
+    total_cost_label.config(text="Total Cost: Rs" + str(total_cost))
+
+
+
+
+
+Name_label = tk.Label(window, text="Name:")
+Name_label.place(x=0,y=0)
+
+Name = tk.Entry(window)
+Name.place(x=100,y=0)
+
+Address_label = tk.Label(window, text="Address:")
+Address_label.place(x=0,y=50)
+
+
+
+Address = tk.Entry(window)
+Address.place(x=100,y=50)
+
+phoneno_label = tk.Label(window, text="phone no:")
+phoneno_label.place(x=0,y=100)
+
+
+phoneno = tk.Entry(window)
+phoneno.place(x=100,y=100)
+
+
+Email_label = tk.Label(window, text="Email:")
+Email_label.place(x=0,y=150)
+
+
+Email = tk.Entry(window)
+Email.place(x=100,y=150)
+
+Gender_label = tk.Label(window, text="Gender:")
+Gender_label.place(x=0,y=200)
+
+r1=tk.Radiobutton(window,text='male',variable=r1_v,value='male')
+r1.place(x=100,y=200)
+r2=tk.Radiobutton(window,text='Female',variable=r1_v,value='Female')
+r2.place(x=160,y=200)
+
+member_label=tk.Label(window,text='Members:')
+member_label.place(x=0,y=250)
+spinbox = tk.Spinbox(window, from_=0, to=10)
+spinbox.place(x=100,y=250)
+
+price_label=tk.Label(window,text='Select the Hours:')
+price_label.place(x=0,y=340)
+scale = tk.Scale(window, from_=5, to=24, orient=tk.HORIZONTAL)
+scale.place(x=120,y=320)
+
+listbox = tk.Listbox(window)
+proof_label=tk.Label(window,text='Select the Proof:')
+proof_label.place(x=0,y=420)
+listbox.insert(0, "Aadhar card")
+listbox.insert(1, "Pan card")
+listbox.insert(2, "Driving license")
+listbox.insert(3, "Passport")
+
+listbox.place(x=100,y=400)
+
+
+car_model_label = tk.Label(window, text="Car Model:")
+car_model_label.place(x=0,y=280)
+
+
+car_model = tk.StringVar(window)
+car_model.set("Sedan")
+car_model_dropdown = tk.OptionMenu(window, car_model, *car_models.keys())
+car_model_dropdown.place(x=100,y=280)
+
+
+num_days_label = tk.Label(window, text="Number of Days:")
+num_days_label.place(x=0,y=580)
+num_days = tk.Entry(window)
+num_days.place(x=100,y=580)
+
+
+
+
+calculate_button = tk.Button(window, text="Calculate Cost", command=calculate_cost)
+calculate_button.place(x=80,y=650)
+total_cost_label = tk.Label(window, text="Total Cost: Rs0")
+
+total_cost_label.place(x=80,y=700)
+window.mainloop()
